@@ -7,7 +7,7 @@ import dns.resolver
 def get_domain_dns(domain):
         
         dns.resolver.default_resolver = dns.resolver.Resolver(configure=False)
-        dns.resolver.default_resolver.nameservers = ['200.1.116.10']
+        dns.resolver.default_resolver.nameservers = ['DNS'] #Change 'DNS' for a DNS server
         
         g=open("resultados.txt","a+")
                 
@@ -34,16 +34,12 @@ def get_domain_dns(domain):
 
         return dns_records 
         
-### Abre el archivo que contiene las URLs ###
-
 f = open("urls.txt","r")
 dominios = f.read()
 urls = dominios.splitlines()
 
-### Abre el archivo donde se almacenarán los resultados encontrados ###
 g=open("resultados.txt","w")
 
-### Realiza las consultas DNS para cada URL del archivo
 for url in urls:
     get_domain_dns(url)
 
